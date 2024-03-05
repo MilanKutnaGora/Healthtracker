@@ -44,10 +44,10 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'users',
-    # 'healthtracker',
-    # 'corsheaders',
-    # 'drf_yasg',
-    # 'django_celery_beat',
+    'healthtrackers',
+    'corsheaders',
+    'drf_yasg',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [

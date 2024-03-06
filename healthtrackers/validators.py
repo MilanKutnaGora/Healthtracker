@@ -29,31 +29,31 @@ class IsPleasantValidator:
 
     def __call__(self, value):
         if value.get(self.habit):
-            is_nice = dict(value).get(self.habit).is_nice
-            if not is_nice:
+            is_pleasant_habit = dict(value).get(self.habit).is_pleasant_habit
+            if not is_pleasant_habit:
                 raise ValidationError('В связанные привычки могут попадать только привычки с признаком приятной привычки')
 
 
 class PleasantHabitValidator:
-    def __init__(self, habit_is_nice, reward, habit):
-        self.habit_is_nice = habit_is_nice
+    def __init__(self, very_is_pleasant_habit, reward, habit):
+        self.very_is_pleasant_habit = very_is_pleasant_habit
         self.reward = reward
         self.habit = habit
 
     def __call__(self, value):
-        habit_is_nice = dict(value).get(self.habit_is_nice)
+        very_is_pleasant_habit = dict(value).get(self.very_is_pleasant_habit)
         reward = dict(value).get(self.reward)
         habit = dict(value).get(self.habit)
-        if habit_is_nice:
+        if very_is_pleasant_habit:
             if reward or habit:
                 raise ValidationError('У приятной привычки не может быть вознаграждения или связанной привычки')
 
 
 class PeriodValidator:
-    def __init__(self, period):
-        self.period = period
+    def __init__(self, periodicity):
+        self.periodicity = periodicity
 
     def __call__(self, value):
-        period = dict(value).get(self.period)
-        if period < 1:
+        periodicity = dict(value).get(self.periodicity)
+        if periodicity < 1:
             raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней')

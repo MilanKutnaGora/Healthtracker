@@ -22,7 +22,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Habits API Documentation",
+        title="Healthtrackers API Documentation",
         default_version='v1',
         description="Habits App API",
         terms_of_service="https://www.example.com/policies/terms/",
@@ -36,7 +36,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
-    path('healthtrackers/', include('healthtrackers.urls', namespace='healthtrackers')),
+    path('', include('healthtrackers.urls', namespace='healthtrackers')),
 
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

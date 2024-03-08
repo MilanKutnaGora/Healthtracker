@@ -92,8 +92,7 @@ DATABASES = {
         'NAME': os.environ.get('HT_DB_NAME'),
         'USER': os.environ.get('HT_DB_USER'),
         'PASSWORD': os.environ.get('HT_DB_PASSWORD'),
-        'HOST': os.environ.get('HT_DB_HOST'),
-        'PORT': os.environ.get('HT_DB_PORT'),
+
     }
 }
 
@@ -164,6 +163,13 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
 
 # URL-адрес брокера сообщений
 CELERY_BROKER_URL = 'redis://redis:6379/0'
